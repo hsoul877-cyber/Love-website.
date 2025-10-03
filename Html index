@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>For You ❤️</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+      background: linear-gradient(135deg, #ffd1dc, #ffe6f7);
+      overflow: hidden;
+      text-align: center;
+    }
+    h1 {
+      margin-top: 50px;
+      color: #ff3366;
+      font-size: 2.5em;
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+      100% { transform: scale(1); }
+    }
+    .heart {
+      position: absolute;
+      color: red;
+      font-size: 24px;
+      animation: float 6s infinite;
+    }
+    @keyframes float {
+      0% { transform: translateY(100vh) scale(1); opacity: 1; }
+      100% { transform: translateY(-10vh) scale(1.5); opacity: 0; }
+    }
+    .note {
+      margin: 20px auto;
+      max-width: 400px;
+      padding: 15px;
+      background: #fff;
+      border-radius: 20px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      cursor: pointer;
+    }
+    .popup {
+      display: none;
+      position: fixed;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      background: #fffafc;
+      padding: 20px;
+      border-radius: 20px;
+      box-shadow: 0 5px 10px rgba(0,0,0,0.3);
+    }
+    img {
+      width: 200px;
+      border-radius: 20px;
+      margin: 20px 0;
+    }
+    audio {
+      margin: 20px;
+    }
+  </style>
+</head>
+<body>
+  <h1>For My Love 💕</h1>
+  <img src="https://placekitten.com/300/200" alt="Your Photo Here">
+
+  <div class="note" onclick="showPopup()">
+    💌 Tap me for a surprise!
+  </div>
+
+  <div id="popup" class="popup">
+    <p>You are my everything ❤️<br>
+    My best friend, my love, my forever 🌸</p>
+    <button onclick="hidePopup()">Close</button>
+  </div>
+
+  <audio controls autoplay loop>
+    <source src="https://www2.cs.uic.edu/~i101/SoundFiles/StarWars60.wav" type="audio/wav">
+    Your browser does not support audio.
+  </audio>
+
+  <script>
+    // Floating hearts generator
+    function createHeart() {
+      const heart = document.createElement("div");
+      heart.classList.add("heart");
+      heart.innerHTML = "❤";
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.animationDuration = (3 + Math.random() * 5) + "s";
+      document.body.appendChild(heart);
+      setTimeout(() => { heart.remove(); }, 8000);
+    }
+    setInterval(createHeart, 500);
+
+    // Popup logic
+    function showPopup() {
+      document.getElementById("popup").style.display = "block";
+    }
+    function hidePopup() {
+      document.getElementById("popup").style.display = "none";
+    }
+  </script>
+</body>
+</html>
